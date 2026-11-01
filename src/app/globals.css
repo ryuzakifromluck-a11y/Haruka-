@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #fff1e8;
+  --bg-grad-a: #ffd9c4;
+  --bg-grad-b: #ffe8da;
+  --bg-grad-c: #ffd6d6;
+  --card: #ffffff;
+  --subtle: #fff5ee;
+  --ink: #2f2a26;
+  --ink-soft: #574e48;
+  --muted: #7d726a;
+  --line: #f5e5da;
+  --line-strong: #ebd3c3;
+  --primary: #f58a4b;
+  --primary-strong: #c2531c;
+  --primary-soft: #ffeadc;
+  --rail-a: #ffa064;
+  --rail-b: #f7803b;
+  --rose: #c4466a;
+  --rose-soft: #fde7ee;
+  --success: #2a8f52;
+  --success-soft: #e2f5e9;
+  --warn: #a8700c;
+  --warn-soft: #fff1d2;
+  --danger: #c23f37;
+  --danger-soft: #fde5e2;
+  --chart-1: #2f9e5b;
+  --chart-2: #e0662a;
+  --pomo-a: #ffe28a;
+  --pomo-b: #ffb36b;
+  --pomo-c: #ff8f6b;
+  --shadow: 0 1px 2px rgba(120, 60, 20, 0.04), 0 10px 30px -14px rgba(200, 100, 40, 0.22);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #1b1512;
+  --bg-grad-a: #2a1d17;
+  --bg-grad-b: #1d1714;
+  --bg-grad-c: #2a1a1e;
+  --card: #261e1a;
+  --subtle: #30261f;
+  --ink: #f8efe9;
+  --ink-soft: #dccdc2;
+  --muted: #ab9b8f;
+  --line: #3a2f28;
+  --line-strong: #4b3d34;
+  --primary: #f59a5f;
+  --primary-strong: #ffb07d;
+  --primary-soft: #45301f;
+  --rail-a: #c4602a;
+  --rail-b: #a84d1f;
+  --rose: #f290aa;
+  --rose-soft: #45262f;
+  --success: #6fd39a;
+  --success-soft: #1e3427;
+  --warn: #f2c46a;
+  --warn-soft: #3d321b;
+  --danger: #f08a80;
+  --danger-soft: #43231f;
+  --chart-1: #36a463;
+  --chart-2: #e26c2e;
+  --pomo-a: #6b4a1c;
+  --pomo-b: #6e3a1e;
+  --pomo-c: #6a2c25;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-subtle: var(--subtle);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-rose: var(--rose);
+  --color-rose-soft: var(--rose-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-chart1: var(--chart-1);
+  --color-chart2: var(--chart-2);
+  --font-sans: var(--font-nunito), ui-rounded, ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-nunito), ui-rounded, ui-sans-serif, system-ui, sans-serif;
+  --shadow-soft: var(--shadow);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  background-image: linear-gradient(135deg, var(--bg-grad-a) 0%, var(--bg-grad-b) 45%, var(--bg-grad-c) 100%);
+  background-attachment: fixed;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--primary-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.font-serif {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Flashcard flip */
+.flip-card {
+  perspective: 1200px;
+}
+.flip-inner {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card[data-flipped="true"] .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+.dark input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* ---------- Pet companion ---------- */
+@keyframes pet-heart {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.4) rotate(var(--r, 0deg));
+  }
+  15% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--dx, 0px) * 0.3), -14px) scale(1.05) rotate(var(--r, 0deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx, 0px)), -96px) scale(0.85) rotate(calc(var(--r, 0deg) * -1));
+  }
+}
+@keyframes pet-fade {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pet-z {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(18px, -40px) scale(1.15);
+  }
+}
+@keyframes pet-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.pet-heart {
+  animation: pet-heart 1.7s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+.pet-z {
+  animation: pet-z 2.4s ease-out infinite;
+}
+.pet-pop {
+  animation: pet-pop 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pet-heart {
+    animation: pet-fade 1.4s ease-out both !important;
+  }
+  .pet-z {
+    animation: pet-fade 2.4s ease-out infinite !important;
+  }
+}
+
+/* Pet chat window */
+@keyframes pet-chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.pet-chat-in {
+  animation: pet-chat-in 0.32s cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+}
+.origin-top.pet-chat-in {
+  animation-name: pet-chat-in-down;
+}
+@keyframes pet-chat-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pet-chat-dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+.pet-chat-dot {
+  animation: pet-chat-dot 1.1s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pet-chat-in {
+    animation: pet-fade 0.2s ease-out both !important;
+  }
+  .pet-chat-dot {
+    animation-duration: 2.4s;
+  }
+}
