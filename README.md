@@ -130,3 +130,5 @@ Clicking the pet opens a floating chat window above it. The pet thinks for a mom
 - All interface text lives in `src/i18n/messages/<area>.ts`. Each file defines English, Uzbek and Russian side by side, and TypeScript fails the build if a language is missing a key.
 - The 20-week plan text is translated in `src/data/curriculum.i18n.*.ts` (looked up by the English sentence) and `src/i18n/messages/planGen.ts`.
 - SAT content is intentionally **not** translated: questions, passages, answer choices, explanations, lessons, vocabulary definitions/examples, and official SAT domain/skill names stay in English, like the real test.
+#   r e d e p l o y  
+ 
